@@ -15,8 +15,8 @@ OUTPUT_PATH = "/output/entry.txt"
 
 def write_entry(path=OUTPUT_PATH):
     """Validate the entry and write it to the given path."""
-    if not ENTRY:
-        raise ValueError("entry must not be empty")
+    if not ENTRY or not ENTRY.strip():
+        raise ValueError("entry must not be empty or whitespace only")
     if "\n" in ENTRY or "\r" in ENTRY:
         raise ValueError("entry must be a single line")
     if not MIN_LENGTH <= len(ENTRY) <= MAX_LENGTH:
